@@ -30,3 +30,30 @@ Controllers will give control to the model (Book.go)
 the operations of the database has to reside in the models file books.go
  */
 
+
+func(b *Book) CreateBook() *Book{
+	db.NewRecord(b) //our orm
+	db.Create(&b)
+	return b
+}
+
+func GetAllBooks() []Book{
+	var Books []Book
+	db.Find(&Books)
+	return Books
+}
+
+func GetBookById(Id int64) (*Book, *gorm.DB){
+	var getBook Book
+	db:= db.Where("ID", Id)
+	return &getBook, db
+}
+
+func DeleteBook(ID int64) Book {
+	var book Book
+	db.Where("ID=?", ID).Delete(&book)
+	return book
+}
+
+//you can create update later
+//for now we can use get, delete and post to update
