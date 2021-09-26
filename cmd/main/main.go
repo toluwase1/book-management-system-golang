@@ -2,6 +2,7 @@ package main
 
 import (
 	"BOOK-MANAGEMENT-SYSTEM/pkg/routes"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
